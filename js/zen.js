@@ -25,8 +25,8 @@ $(document).ready(function(){
 	player.jPlayer({
 			ready: function () {
       		$(this).jPlayer("setMedia", {
-				mp3: "song.mp3",
-        		oga: "song.ogg"
+				mp3: "audio/song.mp3",
+        		oga: "audio/song.ogg"
       		});
     	},
     	swfPath: "",

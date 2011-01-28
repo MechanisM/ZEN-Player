@@ -13,14 +13,13 @@
 
 html {
 	font:62.5%/1 "Droid Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-	background: #f0f0f0 url(bg.png);
+	background: #f0f0f0 url(../img/bg.png);
 }
 
 body {
 	max-width: 520px;
 	margin: 0 auto;
 	text-align: center;
-	background: url(dots.png) repeat-x fixed;
 }
 
 strong {

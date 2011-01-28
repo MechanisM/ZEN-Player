@@ -1,22 +1,16 @@
-![CirclePlayer](https://github.com/maboa/circleplayer/raw/master/screencaps/circleplayer.png)
- 
-CirclePlayer is a demo intended to showcase the jQuery HTML5 Media Library jPlayer
-[https://github.com/happyworm/jPlayer](https://github.com/happyworm/jPlayer) 
+![ZEN-Player](https://github.com/simurai/ZEN-Player/raw/master/screenshot.jpg)
 
-[Try the latest version.](http://happyworm.com/jPlayerLab/circleplayer/)   
+[Latest Demo](http://lab.simurai.com/ui/zen-player/)
 
-Uses HTML5 Audio, CSS3 Transforms (transform:rotate) hooks provided by : [https://github.com/lrbabe/jquery.rotate.js](https://github.com/happyworm/jPlayer)
+Current state: It works more or less in Firefox4, Chrome, Safari, Opera, but there are some differences in the visuals. Other known issues are:
 
-A full browser fallback is planned, jPlayer provides the Flash HTML5 Audio fallback and the idea is to use a sprite map to display progress in non CSS3 compliant browsers. [http://modernizr.github.com/Modernizr/](http://modernizr.github.com/Modernizr/) could be used to check CSS3 transform:rotate compliance. 
+- There is no preload indicator yet.
+- Chrome on Windows has a known bug where the circles don't get cut off, no panic, should already be fixed in the nightly.
+- Opera starts to rotate funky after the first round, no idea why.
+- It needs a proper fallback for older browsers. A Modernizr and Flash combo should do it.
+- Plus, no mobile support yet.
 
-Possibilities exist to enhance the demo with [https://wiki.mozilla.org/Audio_Data_API](https://wiki.mozilla.org/Audio_Data_API) for supporting browsers.
+PS: Thanks to a friendly worm named [@maboa](http://twitter.com/maboa) who created the original version and most of the JS code.
 
-Note the progress bar will not function correctly in Opera 11 due to a JIT compiler bug in the Opera browser : [http://twitter.com/dstorey/status/28108260418523137](http://twitter.com/dstorey/status/28108260418523137) 
-
-The demo's current look is heavily inspired by [http://forrst.com/posts/Untitled-CJz](http://forrst.com/posts/Untitled-CJz)       
-
-Thanks to [Jussi Kalliokoski](http://twitter.com/quinnirill) for contributing.
-
-CirclePlayer is dual-licensed under the GPL and MIT licenses
 
  
