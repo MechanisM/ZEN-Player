@@ -5,7 +5,15 @@
  */
 
 
-/* outer */
+/* player */
+
+#zen .player {
+	/* With display: none; it doesn't work on iOS, below an alternative */
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
 
 #zen:before {
 	content: "";
@@ -265,12 +273,7 @@
 
 
 
-/* player */
 
-#zen .player {
-	/* No visuals, only holds the audio tag. */
-	display: none;
-}
 
 
 

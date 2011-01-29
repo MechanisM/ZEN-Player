@@ -16,9 +16,7 @@ $(document).ready(function(){
 		
   	var status = "stop";
 	var dragging = false;
-	var skip = 5;	// duration of record skipping
 	
-
 
 	
 	// init
@@ -28,12 +26,13 @@ $(document).ready(function(){
 	player.jPlayer({
 			ready: function () {
       		$(this).jPlayer("setMedia", {
+    			m4a: "audio/song.m4a",
 				mp3: "audio/song.mp3",
         		oga: "audio/song.ogg"
       		});
     	},
     	swfPath: "",
-		supplied: "mp3, oga"         
+		supplied: "m4a, mp3, oga"         
   	});  
 
 
@@ -90,8 +89,6 @@ $(document).ready(function(){
 			status = "pause";
 			player.jPlayer("pause");
 		}
-
-		return false;
 	};
 	
 	
