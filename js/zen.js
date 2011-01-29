@@ -3,9 +3,10 @@
 /*
  *
  * ZEN - HTML5-CSS3 Audio Player
- * Author: @simurai (simurai.com)
+ * by @simurai (simurai.com)
  *
  * Most of this code by: @maboa (happyworm.com)
+ * and: @quinnirill (niiden.com/jussi/)
  *
  */
 
@@ -17,6 +18,8 @@ $(document).ready(function(){
 	var dragging = false;
 	var skip = 5;	// duration of record skipping
 	
+
+
 	
 	// init
 	
@@ -32,6 +35,9 @@ $(document).ready(function(){
     	swfPath: "",
 		supplied: "mp3, oga"         
   	});  
+
+
+
 
 	
 	// update, end
@@ -49,6 +55,8 @@ $(document).ready(function(){
 		$('#zen .progress').css({rotate: '0deg'});
 		status = "stop";
 	});
+	
+	
 	
 	
 	
@@ -88,63 +96,31 @@ $(document).ready(function(){
 	
 	
 	
-	//mouseout, mouseup
 	
 	// draggin
 	
-	var clickControl = $('#zen .progress');
+	var clickControl = $('#zen .drag');
 	
-	function onMouseUp(event) {  		
-        var pc = getArcPc(event);
-		player.jPlayer("playHead", pc).jPlayer("play");
-		$(document).unbind('mouseup', onMouseUp);
-        dragging = false;
-        
-        $('#zen .circle').removeClass( "skip" ).addClass( "rotate" );
-		$('#zen .button').css( "pointer-events", "auto" );
-
-		return false;
-	};
-
-	clickControl.mousedown(function(event){
-		if (event.preventDefault){
-			event.preventDefault();
-		}  
-
-		$(document).bind('mouseup', onMouseUp);
-		$('#zen .circle').removeClass( "rotate" ).addClass( "skip" );
-		$('#zen .button').css( "pointer-events", "none" );
-		
-
-		return false;
-	});  
-	
-	// Can't figure out how to pass event through to mousehold so I made it global  
-	
-	var moveEvent;
-	
-	clickControl.mousemove(function(event){
-	   moveEvent = event;
-	});
-	
-	
-	
-	var skipcount = 0;
-	
-	clickControl.mousehold(function(){  
-		var pc = getArcPc(moveEvent);
-		dragging = true;   
-		
-		if(skipcount > skip) {
-			player.jPlayer("playHead", pc).jPlayer("play");  // This bit does the scrubbing
-			skipcount = 0;
-		} else {
-			skipcount++;
+	clickControl.grab({
+		onstart: function(){
+			dragging = true;
+			$('#zen .button').css( "pointer-events", "none" );
+			
+		}, onmove: function(event){
+			var pc = getArcPc(event.position.x, event.position.y);
+			player.jPlayer("playHead", pc).jPlayer("play");
+			displayProgress(pc);
+			
+		}, onfinish: function(event){
+			dragging = false;
+			var pc = getArcPc(event.position.x, event.position.y);
+			player.jPlayer("playHead", pc).jPlayer("play");
+			$('#zen .button').css( "pointer-events", "auto" );
 		}
-		displayProgress(pc);			
-	});
+	});	
 	
-		
+	
+	
 	
 	
 	
@@ -155,11 +131,11 @@ $(document).ready(function(){
 		$('#zen .progress').css({rotate: degs}); 		
 	}
 	
-	function getArcPc(event) { 
-		var	self	= $('#zen'),
+	function getArcPc(pageX, pageY) { 
+		var	self	= clickControl,
 			offset	= self.offset(),
-			x	= event.pageX - offset.left - self.width()/2,
-			y	= event.pageY - offset.top - self.height()/2,
+			x	= pageX - offset.left - self.width()/2,
+			y	= pageY - offset.top - self.height()/2,
 			a	= Math.atan2(y,x);  
 			
 			if (a > -1*Math.PI && a < -0.5*Math.PI) {
@@ -172,6 +148,8 @@ $(document).ready(function(){
 		   
 		return pc;
 	}
+	
+
 	
 	
 });

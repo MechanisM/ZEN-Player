@@ -10,7 +10,7 @@ Current state: It works more or less in Firefox4, Chrome, Safari, Opera, but the
 - It needs a proper fallback for older browsers. A Modernizr and Flash combo should do it.
 - Plus, no mobile support yet.
 
-PS: Thanks to a friendly worm named [@maboa](http://twitter.com/maboa) who created the original version and most of the JS code.
+PS: Thanks to a friendly worm named [@maboa](http://twitter.com/maboa) who created the original version and most of the JS code and also [@quinnirill](http://twitter.com/quinnirill) for the dragging.
 
 
  

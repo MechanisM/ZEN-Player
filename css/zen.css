@@ -171,7 +171,14 @@
 
 
 
+/* drag */
 
+#zen .drag {
+	display: block;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+}
 
 
 
@@ -243,19 +250,11 @@
 }
 
 
-/* Record rotation/skipping only in webkit. Yes, could be done in JS, but I prefer CSS and it's not a showstopper, just visual. */
-#zen.play .circle.skip {
-	-webkit-animation: skip .7s ease-in infinite;	
-}
+/* Record rotation only in webkit. Yes, could be done in JS, but I prefer CSS and it's not a showstopper, just visual. */
 #zen.play .circle.rotate {
 	-webkit-animation: rotate 20s linear infinite;	
 }
 
-@-webkit-keyframes skip {
-	from { -webkit-transform: rotate(   0deg); } 
-	 90% { -webkit-transform: rotate( -20deg); }
-	  to { -webkit-transform: rotate(   0deg); }
-}
 @-webkit-keyframes rotate {
 	from { -webkit-transform: rotate(   0deg); } 
 	  to { -webkit-transform: rotate(-360deg); }
