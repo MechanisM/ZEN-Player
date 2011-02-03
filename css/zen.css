@@ -190,6 +190,23 @@
 
 
 
+/* buffer */
+
+#zen .buffer {
+	display: block;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: url(../img/buffer.png) no-repeat;
+}
+#zen .buffer.loaded {
+	opacity: 0;
+	-webkit-transition: opacity .5s;
+	   -moz-transition: opacity .5s;	
+		 -o-transition: opacity .5s;	
+			transition: opacity .5s;
+}
+
 /* progress */
 
 #zen .progress {

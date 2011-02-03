@@ -39,7 +39,30 @@ $(document).ready(function(){
 
 
 	
-	// update, end
+	// preload, update, end
+	
+	
+	
+	player.bind($.jPlayer.event.progress, function(event) {    
+			
+		var audio = $('#zen audio').get(0);
+		var pc = 0;    
+				
+		if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+		 	pc = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10); 
+		  	displayBuffered(pc);
+		  	console.log(pc);
+		  	if(pc >= 100) {
+		  		console.log("loaded");
+		  		$('#zen .buffer').addClass("loaded");
+		  	}  
+		}        
+		
+	});
+	
+	//player.bind($.jPlayer.event.loadeddata, function(event) {    
+		//$('#zen .buffer').addClass("loaded");    
+	//});
 	
 	player.bind($.jPlayer.event.timeupdate, function(event) { 
 		var pc = event.jPlayer.status.currentPercentAbsolute;
@@ -126,6 +149,10 @@ $(document).ready(function(){
 	function displayProgress(pc) {
 		var degs = pc * 3.6+"deg"; 
 		$('#zen .progress').css({rotate: degs}); 		
+	}
+	function displayBuffered(pc) {
+		var degs = pc * 3.6+"deg"; 
+		$('#zen .buffer').css({rotate: degs}); 		
 	}
 	
 	function getArcPc(pageX, pageY) { 
